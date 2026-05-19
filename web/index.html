@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>鱼鼓配置修改器</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero">
+      <h1>SAKATAIKO II 配置修改器</h1>
+      <p>BY SAKATAIKO TEAM</p>
+    </header>
+
+    <section class="config-layout">
+      <div class="device-actions">
+        <button id="btn-connect">连接设备</button>
+        <button id="btn-read" disabled>读取配置</button>
+        <button id="btn-write" disabled>写入配置</button>
+        <button id="btn-defaults" disabled>恢复默认</button>
+        <span id="status">已断开</span>
+      </div>
+
+      <section class="threshold-panel" aria-labelledby="threshold-title">
+        <div class="panel-label" id="threshold-title">灵敏度</div>
+        <div class="help-tip" tabindex="0" aria-label="帮助">
+          帮助
+          <span class="tooltip">实际含义为对信号变化的敏感阈值；滑条值越低，灵敏度越高。</span>
+        </div>
+        <div class="slider-bank">
+          <label class="slider-control slider-control--cyan">
+            <span class="channel-shell"><span class="channel-label">LK</span></span>
+            <input id="min_threshold0" type="range" min="0" max="25" step="1" value="10" data-value-output="min_threshold0_value" />
+            <output id="min_threshold0_value">10</output>
+          </label>
+          <label class="slider-control slider-control--red">
+            <span class="channel-shell"><span class="channel-label">LD</span></span>
+            <input id="min_threshold3" type="range" min="0" max="25" step="1" value="10" data-value-output="min_threshold3_value" />
+            <output id="min_threshold3_value">10</output>
+          </label>
+          <label class="slider-control slider-control--red">
+            <span class="channel-shell"><span class="channel-label">RD</span></span>
+            <input id="min_threshold1" type="range" min="0" max="25" step="1" value="10" data-value-output="min_threshold1_value" />
+            <output id="min_threshold1_value">10</output>
+          </label>
+          <label class="slider-control slider-control--cyan">
+            <span class="channel-shell"><span class="channel-label">RK</span></span>
+            <input id="min_threshold2" type="range" min="0" max="25" step="1" value="10" data-value-output="min_threshold2_value" />
+            <output id="min_threshold2_value">10</output>
+          </label>
+        </div>
+      </section>
+
+      <section class="side-panel" aria-label="其他参数">
+        <label class="number-card">
+          <span class="number-card__label">底噪抑制</span>
+          <span class="help-tip number-card__help" tabindex="0" aria-label="底噪抑制帮助">
+            帮助
+            <span class="tooltip">用于过滤静态底噪，当无敲击却产生误触发时可以适当调高。</span>
+          </span>
+          <input id="zero_threshold" type="number" step="1" value="0" />
+        </label>
+        <label class="number-card">
+          <span class="number-card__label">PC模式保持</span>
+          <span class="help-tip number-card__help" tabindex="0" aria-label="PC模式保持帮助">
+            帮助
+            <span class="tooltip">PC键盘模式下按键输出的保持时间，雷音祭、Taikonauts等游戏建议8ms及以上。OPTK等基于事件触发的游戏可调至0以获得极限性能。</span>
+          </span>
+          <span class="unit-field">
+            <input id="key_hold_ms_keyboard" type="number" step="1" value="8" />
+            <span class="unit-label">ms</span>
+          </span>
+        </label>
+        <label class="number-card">
+          <span class="number-card__label">NS模式保持</span>
+          <span class="help-tip number-card__help" tabindex="0" aria-label="NS模式保持帮助">
+            帮助
+            <span class="tooltip">NS模式下按键输出的保持时间。</span>
+          </span>
+          <span class="unit-field">
+            <input id="key_hold_ms_switch" type="number" step="1" value="24" />
+            <span class="unit-label">ms</span>
+          </span>
+        </label>
+        <input id="hit_mode" type="hidden" value="0" />
+      </section>
+    </section>
+  </main>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
